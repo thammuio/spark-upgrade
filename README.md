@@ -46,3 +46,22 @@ The Scala upgrade tooling is built on top of ScalaFix and has access to (most) o
 #### Limitations / Unique Challenges
 
 While scalafix can be integrated with tools like Scala Steward (yay!), recompiling and publishing new artifacts is required to verify the changes. It is likely that dependencies will need to be manually upgraded.
+
+
+# Dependancy Setup on CentOS 7
+
+sudo yum install git wget curl
+
+sudo rm -f /etc/yum.repos.d/bintray-rpm.repo
+curl -L https://www.scala-sbt.org/sbt-rpm.repo > sbt-rpm.repo
+sudo mv sbt-rpm.repo /etc/yum.repos.d/
+sudo yum install sbt
+
+curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
+
+tar -xvf jdk-8u202-linux-x64.tar.gz
+sudo mv jdk1.8.0_202 /usr/java/
+ln -s /usr/java/jdk1.8.0_202 /usr/java/latest
+
+export JAVA_HOME=/usr/java/latest
+export PATH=${JAVA_HOME}/bin:${PATH}
