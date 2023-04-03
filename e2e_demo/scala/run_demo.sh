@@ -2,7 +2,7 @@
 
 echo "Hi Friend! If you have questions running this script please reach out on Slack :D"
 
-set -ex
+# set -ex
 
 INITIAL_VERSION=${INITIAL_VERSION:-2.4.8}
 TARGET_VERSION=${TARGET_VERSION:-3.3.1}
